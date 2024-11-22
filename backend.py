@@ -9,9 +9,9 @@ CORS(app)
 # Function to create a MySQL connection
 def create_connection():
     return pymysql.connect(
-        host="localhost",
-        user="root",
-        password="arav",  # Your MySQL password
+        host="  ",#host name
+        user=" ",#your user name
+        password="  ",  # Your MySQL password
         database="pizza_ordering",  # Your database name
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor
@@ -20,9 +20,9 @@ def create_connection():
 # Function to create the database and tables
 def create_database_and_tables():
     connection = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="arav",
+        host=" ",# host name
+        user="  ",#user name
+        password=" ",#password
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor
     )
