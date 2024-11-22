@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PizzaRelic</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .item-added-alert {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+    }
+    footer{
+      margin-bottom: 0px;
+      display: flex;
+      align-items:center ;
+      justify-content: center;
+      text-align: center;
+      color: aliceblue;
+      width: 100%;
+      flex-direction: column;
+    }
+    footer h3{
+      font-size: 15px;
+    }
+    footer h5{
+      font-size: 10px;
+    }
+    body {
+      background: pink;
+    }
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+    .hero-section {
+      background-image: url('https://img.freepik.com/premium-photo/minimalistic-photo-food-advertising-photographs-pizzas_877530-530.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+    .about-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">PizzaRelic</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="hero-section bg-dark">
+    <h1>Welcome to Pizzarelic</h1>
+    <p>A Slice Above the Rest!</p>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section">
+    <h2>About Us</h2>
+    <p>
+      At Pizzarelic, we believe that every pizza tells a story—one of passion, craftsmanship, and an unwavering commitment to quality. Our pizzas are handcrafted with the freshest ingredients, from our dough that’s made fresh daily to our hand-picked toppings. Whether you're in the mood for a classic Margherita or something a little more adventurous, we’ve got a slice for every craving. Join us in experiencing the true art of pizza-making, where every bite is a slice of perfection.
+    </p>
+  </div>
+
+  <div class="alert alert-success item-added-alert d-none" role="alert" id="itemAddedAlert">
+    Pizza added to the cart!
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Our Pizza Menu</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://wengers.in/wp-content/uploads/2020/12/veg_pizza-600x600.jpg" alt="Classic Margherita">
+          <div class="card-body">
+            <h5 class="card-title">Classic Margherita</h5>
+            <p class="card-text">A simple classic with tomato sauce, mozzarella, and basil.</p>
+            <p class="card-text"><strong>Price: ₹399</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="Classic Margherita" data-price="399">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://wengers.in/wp-content/uploads/2020/12/non_veg_pizza-600x600.jpg" class="card-img-top" alt="BBQ Chicken Pizza">
+          <div class="card-body">
+            <h5 class="card-title">BBQ Chicken Pizza</h5>
+            <p class="card-text">Topped with grilled chicken, onions, and tangy BBQ sauce.</p>
+            <p class="card-text"><strong>Price: ₹429</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="BBQ Chicken Pizza" data-price="429">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://caitsplate.com/wp-core/wp-content/uploads/2020/06/IMG_2825-1-300x300.jpg" class="card-img-top" alt="Veggie Delight">
+          <div class="card-body">
+            <h5 class="card-title">Veggie Delight</h5>
+            <p class="card-text">Loaded with fresh vegetables and a sprinkle of herbs.</p>
+            <p class="card-text"><strong>Price: ₹349</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="Veggie Delight" data-price="349">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://app.a-zhomedelivery.com/wp-content/uploads/2024/06/Tandoori-Paneer-Pizza-12-inch-01-300x300.jpg" class="card-img-top" alt="Pepperoni Pizza">
+          <div class="card-body">
+            <h5 class="card-title">Pepperoni Pizza</h5>
+            <p class="card-text">A classic favorite with pepperoni slices, mozzarella, and tomato sauce.</p>
+            <p class="card-text"><strong>Price: ₹380</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="Pepperoni Pizza" data-price="380">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://yappykitchen.com/wp-content/uploads/2021/04/IMG_2619_1200x1200-300x300.jpg" class="card-img-top" alt="Hawaiian Pizza">
+          <div class="card-body">
+            <h5 class="card-title">Hawaiian Pizza</h5>
+            <p class="card-text">A sweet and savory mix of ham, pineapple, and mozzarella.</p>
+            <p class="card-text"><strong>Price: ₹349</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="Hawaiian Pizza" data-price="349">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="https://pforpizza.in/wp-content/uploads/2024/01/freshly-baked-homemade-pizza-rustic-table-generated-by-ai-300x300.jpg" class="card-img-top" alt="Meat Lovers Pizza">
+          <div class="card-body">
+            <h5 class="card-title">Meat Lovers Pizza</h5>
+            <p class="card-text">For meat enthusiasts with pepperoni, sausage, and ham.</p>
+            <p class="card-text"><strong>Price: ₹450</strong></p>
+            <button class="btn btn-primary add-to-cart" data-pizza="Meat Lovers Pizza" data-price="450">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart mt-5">
+      <h3>Your Cart</h3>
+      <div class="cart-items" id="cartItems">
+        <ul class="list-group"></ul>
+      </div>
+      <p class="mt-3"><strong>Total Price: ₹<span id="totalPrice">0</span></strong></p>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="customerName" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="contactNumber" placeholder="Your Contact Number" required>
+      </div>
+      <button class="btn btn-success" id="checkout">Place Order</button>
+    </div>
+  </div>
+  <br>
+  <br>
+
+
+  <footer class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <h3>Contact Us</h3>
+    <h5>Ph No: +918925427661</h5>
+    <h5>Mail: Pizzarelic@gmail.in</h5>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let cart = [];
+    let totalPrice = 0;
+
+    // Add to cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const pizzaName = this.getAttribute('data-pizza');
+        const pizzaPrice = parseFloat(this.getAttribute('data-price'));
+
+        cart.push({ name: pizzaName, price: pizzaPrice });
+        totalPrice += pizzaPrice;
+
+        // Update UI
+        updateCartUI();
+        showAlert("Pizza added to the cart!");
+      });
+    });
+
+    // Function to update cart UI
+    function updateCartUI() {
+      const cartItemsList = document.getElementById('cartItems').querySelector('ul');
+      cartItemsList.innerHTML = ''; // Clear existing items
+      cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+        listItem.textContent = `${item.name} - ₹${item.price.toFixed(2)}`;
+        cartItemsList.appendChild(listItem);
+      });
+      document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+    }
+
+    // Show alert for added items
+    function showAlert(message) {
+      const alertBox = document.getElementById('itemAddedAlert');
+      alertBox.textContent = message;
+      alertBox.classList.remove('d-none');
+
+      setTimeout(() => {
+        alertBox.classList.add('d-none');
+      }, 2000);
+    }
+
+    document.getElementById('checkout').addEventListener('click', function() {
+  const customerName = document.getElementById('customerName').value;
+  const contactNumber = document.getElementById('contactNumber').value;
+
+  // Prepare order data
+  const orderData = {
+    customer_name: customerName,
+    contact_number: contactNumber,
+    total_price: totalPrice,
+    order_items: cart.map(item => ({ name: item.name, price: item.price }))
+  };
+
+  // Send order data to the backend
+  fetch('http://127.0.0.1:5000/place_order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderData),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      alert(data.message);
+      // Reset cart
+      cart = [];
+      totalPrice = 0;
+      updateCartUI();
+      document.getElementById('customerName').value = '';
+      document.getElementById('contactNumber').value = '';
+    } else {
+      alert("An error occurred while placing the order.");
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert("An error occurred while placing the order.");
+  });
+});
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
